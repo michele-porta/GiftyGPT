@@ -1,0 +1,25 @@
+{
+  "name": "test_open_ia",
+  "version": "1.0.0",
+  "description": "test api on browser",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "openIA"
+  ],
+  "author": "m.porta",
+  "license": "ISC",
+  "dependencies": {
+    "cookie-parser": "^1.4.6",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "openai": "^3.2.1",
+    "pg": "^8.10.0",
+    "short-unique-id": "^4.4.4",
+    "ua-parser-js": "^1.0.35",
+    "url": "^0.11.0",
+    "urlgenerator": "^0.7.4"
+  }
+}

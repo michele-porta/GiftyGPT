@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>Gift</title>
+      <link rel="stylesheet" type="text/css" href="style.css">
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+   </head>
+   <body>
+      <div id="menu">
+         <ul>
+            <li onclick="home()"><a href="#">Homepage</a></li>
+            <li onclick="desired()"><a href="#">I più desiderari</a></li>
+            <li onclick="search()"><a href="#">Le ricerche più frequenti</a></li>
+         </ul>
+      </div>
+      <h1>Find your gift</h1>
+      <div class="searchBox" id="searchBox">
+         <input type="text" id="search-bar" placeholder="Type here...">
+         <button id="search-button">
+         <i class="material-icons">
+         search
+         </i>
+         </button>
+      </div>
+      <div class="loader" id="loader_waiting"></div>
+      <div id="list_div">
+         <ul id="results-list"></ul>
+      </div>
+      <div id="more-div-button">
+         <button class="more-button">Altre     idee</button>
+      </div>
+      <script src="index.js"></script>
+   </body>
+</html>
