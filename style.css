@@ -141,4 +141,27 @@ h1 {
      margin-top: 50px;
      margin-bottom: 50px;
 }
+
+#table {
+    border-collapse: collapse;
+    width: 80%;
+    margin:auto;
+  }
+  
+  #table td, #table th {
+    border: 1px solid #2f3640;
+    padding: 8px;
+  }
+  
+  #table tr {background-color: #f2f2f2;}
+  
+  #table tr:hover {background-color: #ddd;}
+  
+  #table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #2f3640;
+    color: white;
+  }
  
