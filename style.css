@@ -1,13 +1,14 @@
 body {
      margin: 0;
      padding: 0;
-     background: #fc4a1a;
+     background: #FBAB7E;
     /* fallback for old browsers */
-     background: -webkit-linear-gradient(to right, #f7b733, #fc4a1a);
+     background: -webkit-linear-gradient(to right, #f7b733, #F7CE68);
     /* Chrome 10-25, Safari 5.1-6 */
-     background: linear-gradient(to right, #f7b733, #fc4a1a);
+     background: linear-gradient(to right, #FBAB7E, #F7CE68);
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
+
 
 h1 {
      font-size: 34px;

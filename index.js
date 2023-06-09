@@ -15,7 +15,21 @@ function home() {
 function desired() {
   console.log("This is Desired!");
   window.location.href = '/desired';
+
 };
+
+function desiredloaded() {
+  fetch('/desired_table', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+  .then(response => response.json())
+  .then(data => {
+    console.log(data);
+  });
+}
 
 function search() {
   console.log("This is Search!");

@@ -61,8 +61,16 @@ app.get("/home", (req, res) => {
   res.sendFile(__dirname + "/home.html");
 });
 
-app.get("/desired", (req, res) => {
+app.get("/desired", async(req, res) => {
   res.sendFile(__dirname + "/desired.html");
+});
+
+app.post("/desired_table", async(req, res) => {
+  await db.getProducts().then(data => {
+    if (data !== 0) {
+      res.json(data);
+    }
+  });
 });
 
 app.get("/search", (req, res) => {

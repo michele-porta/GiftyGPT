@@ -53,7 +53,35 @@ const insertProduct = async (research_id, title, description, link) => {
 	}
 };
 
+const getProducts = async () => {
+
+	const client = new Client({
+		user: process.env.PGUSER,
+		host: process.env.PGHOST,
+		database: process.env.PGDATABASE,
+		password: process.env.PGPASSWORD,
+		port: process.env.PGPORT
+	});
+
+	try {
+		await client.connect(); // gets connection
+		const result= await client.query(`SELECT research_id, title, description, link, count (title) as total
+			FROM products
+			GROUP BY research_id, title,description, link
+			ORDER BY total
+			LIMIT 10`); // sends queries
+		console.log('Get most desired products');
+		return result.rows;
+	} catch (error) {
+		console.error(error.stack);
+		return false;
+	} finally {
+		await client.end(); // closes connection
+	}
+};
+
 module.exports = {
 	insertResearch,
-	insertProduct
+	insertProduct,
+	getProducts
 };
