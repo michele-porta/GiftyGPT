@@ -77,6 +77,14 @@ app.get("/search", (req, res) => {
   res.sendFile(__dirname + "/search.html");
 });
 
+app.post("/researches_table", async(req, res) => {
+  await db.getresearches().then(data => {
+    if (data !== 0) {
+      res.json(data);
+    }
+  });
+});
+
 app.post('/searched', async (req, res) => {
   const userAgent = req.headers['user-agent'];
   var ua = parser(userAgent);

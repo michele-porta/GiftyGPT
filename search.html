@@ -4,7 +4,7 @@
     <title>Search</title>
     <link rel="stylesheet" type="text/css" href="style.css">
   </head>
-  <body>
+  <body onload="searchedloaded()">
   <div id="menu">
 <ul>
       <li onclick="home()"><a href="#">Homepage</a></li>
@@ -13,50 +13,10 @@
     </ul>
   </div>
     <h1>Le ricerche più frequenti</h1>
-    <table id="table">
+    <table id="table_searched">
       <tr>
         <th>Ricerche</th>
         <th>Regali</th>
-      </tr>
-      <tr>
-        <td>Alfreds Futterkiste</td>
-        <td><button onclick="eseguiAzione(1)">Mostra regali</button></td>
-      </tr>
-      <tr>
-        <td>Berglunds snabbköp</td>
-        <td><button onclick="eseguiAzione(1)">Mostra regali</button></td>
-      </tr>
-      <tr>
-        <td>Centro comercial Moctezuma</td>
-        <td><button onclick="eseguiAzione(1)">Mostra regali</button></td>
-      </tr>
-      <tr>
-        <td>Ernst Handel</td>
-        <td><button onclick="eseguiAzione(1)">Mostra regali</button></td>
-      </tr>
-      <tr>
-        <td>Island Trading</td>
-        <td><button onclick="eseguiAzione(1)">Mostra regali</button></td>
-      </tr>
-      <tr>
-        <td>Königlich Essen</td>
-        <td><button onclick="eseguiAzione(1)">Mostra regali</button></td>
-      </tr>
-      <tr>
-        <td>Laughing Bacchus Winecellars</td>
-        <td><button onclick="eseguiAzione(1)">Mostra regali</button></td>
-      </tr>
-      <tr>
-        <td>Magazzini Alimentari Riuniti</td>
-        <td><button onclick="eseguiAzione(1)">Mostra regali</button></td>
-      </tr>
-      <tr>
-        <td>North/South</td>
-        <td><button onclick="eseguiAzione(1)">Mostra regali</button></td>
-      </tr>
-      <tr>
-        <td>Paris spécialités</td>
-        <td><button onclick="eseguiAzione(1)">Mostra regali</button></td>
       </tr>
     </table>
     <script src="index.js"></script>

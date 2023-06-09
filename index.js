@@ -18,6 +18,25 @@ function desired() {
 
 };
 
+function createTableDesired(title, description, link) {
+  const tbody = document.querySelector('#table_desired');
+  const row = document.createElement('tr');
+
+  const titleCell = document.createElement('td');
+  titleCell.textContent = title;
+  row.appendChild(titleCell);
+
+  const descriptionCell = document.createElement('td');
+  descriptionCell.textContent = description;
+  row.appendChild(descriptionCell);
+
+  const linkCell = document.createElement('td');
+  linkCell.textContent = link;
+  row.appendChild(linkCell);
+
+  tbody.appendChild(row);
+}
+
 function desiredloaded() {
   fetch('/desired_table', {
     method: 'POST',
@@ -27,13 +46,48 @@ function desiredloaded() {
   })
   .then(response => response.json())
   .then(data => {
-    console.log(data);
+    data.forEach((row) => {
+      createTableDesired(row.title, row.description, row.link);
+    });
   });
 }
 
 function search() {
   console.log("This is Search!");
   window.location.href = '/search';
+}
+
+function createTableResearch(research) {
+  const tbody = document.querySelector('#table_searched');
+  const row = document.createElement('tr');
+
+  const researchCell = document.createElement('td');
+  researchCell.textContent = research;
+  row.appendChild(researchCell);
+
+  const linkCell = document.createElement('td');
+  const linkButton = document.createElement('button');
+  const text = document.createTextNode("Mostra regali");
+  linkButton.appendChild(text);
+  linkCell.appendChild(linkButton);
+  
+  row.appendChild(linkCell);
+  tbody.appendChild(row);
+}
+
+function searchedloaded() {
+  fetch('/researches_table', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+  .then(response => response.json())
+  .then(data => {
+    data.forEach((row) => {
+      createTableResearch(row.research);
+    });
+  });
 }
 
 searchButton.addEventListener('click', function() {

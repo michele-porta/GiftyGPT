@@ -143,22 +143,22 @@ h1 {
      margin-bottom: 50px;
 }
 
-#table {
+table {
     border-collapse: collapse;
     width: 80%;
     margin:auto;
   }
   
-  #table td, #table th {
+table td, th {
     border: 1px solid #2f3640;
     padding: 8px;
   }
   
-  #table tr {background-color: #f2f2f2;}
+table tr {background-color: #f2f2f2;}
   
-  #table tr:hover {background-color: #ddd;}
+table tr:hover {background-color: #ddd;}
   
-  #table th {
+table th {
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: left;
