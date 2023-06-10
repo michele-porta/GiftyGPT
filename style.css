@@ -136,6 +136,25 @@ h1 {
  .more-button:hover{
      background-color: gray 
 }
+
+.table-button {
+    align-items: center;
+    background-color: #2f3640;
+    border: 0;
+    border-radius: 100px;
+    cursor: pointer;
+    display: inline-flex;
+    color: white;
+    font-size: 14px;
+    justify-content: center;
+    min-height: 30px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.table-button:hover{
+    background-color: gray 
+}
+
  #more-div-button {
      display: none;
      text-align: center;

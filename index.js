@@ -67,10 +67,11 @@ function createTableResearch(research) {
 
   const linkCell = document.createElement('td');
   const linkButton = document.createElement('button');
+  linkButton.setAttribute("class", "table-button");
   const text = document.createTextNode("Mostra regali");
   linkButton.appendChild(text);
   linkCell.appendChild(linkButton);
-  
+
   row.appendChild(linkCell);
   tbody.appendChild(row);
 }
