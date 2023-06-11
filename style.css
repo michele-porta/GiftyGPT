@@ -24,6 +24,10 @@ h1 {
      color: white;
 }
 
+ li {
+    margin-top: 10px;
+}
+
  #menu {
      background-color: #2f3640;
 }
@@ -83,7 +87,7 @@ h1 {
      display: none;
      margin: auto;
      margin-top: 100px;
-     width: 50%;
+     width: 70%;
      text-align: left;
      background-color: #2f3640;
      border-radius: 30px;

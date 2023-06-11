@@ -68,7 +68,7 @@ const getProducts = async () => {
 		const result= await client.query(`SELECT research_id, title, description, link, count (title) as total
 			FROM products
 			GROUP BY research_id, title,description, link
-			ORDER BY total
+			ORDER BY total DESC
 			LIMIT 10`); // sends queries
 		console.log('Get most desired products');
 		return result.rows;
@@ -95,7 +95,7 @@ const getresearches = async () => {
 		const result= await client.query(`SELECT research, count (research) as total
 		FROM research
 		GROUP BY research
-		ORDER BY total
+		ORDER BY total DESC
 		LIMIT 10`); // sends queries
 		console.log('Get most performed searches');
 		return result.rows;

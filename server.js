@@ -9,7 +9,10 @@ const {
   OpenAIApi
 } = require("openai");
 const db = require('./DB');
+
 let id_research = 0;
+let old_prompt ='';
+let previous_answer = '';
 
 openai_organization = process.env.OPENAI_ORGANIZATION;
 openai_api_key = process.env.OPENAI_API;;
@@ -21,13 +24,22 @@ const configuration = new Configuration({
 
 const openai = new OpenAIApi(configuration);
 
-const role = `I want you to act as a salesman. suggest me 5 gift ideas, purchasable on amazon, based on the person's description that i will write you in the next prompt. Only provide a  RFC8259 compliant JSON response , in italian, following this format without deviation.
+const role = `I want you to act as a salesman. suggest me 5 gift ideas, purchasable on Amazon, based on the person's description that i will write you in the next prompt. Only provide a  RFC8259 compliant JSON response , in italian, following this format without deviation.
 {
     "gifts": {
         "title": "",
         "description": ""
     }
+}
+If the next prompts aren't a description of a person write only this:
+{
+    "gifts": {
+        "title": "error",
+        "description": "error"
+    }
 }`;
+
+const moreIdeas= 'Suggest me other 5 gift ideas. Only provide a  RFC8259 compliant JSON response , in italian';
 
 async function chatBot(prompt) {
   const response = await openai.createChatCompletion({
@@ -40,6 +52,30 @@ async function chatBot(prompt) {
         role: 'user',
         content: prompt
       }
+    ],
+  });
+  return response.data.choices[0].message.content;
+}
+
+async function chatBotMore(old_prompt, previous_answer) {
+  const response = await openai.createChatCompletion({
+    model: engine,
+    messages: [{
+        role: 'system',
+        content: role
+      },
+      {
+        role: 'user',
+        content: old_prompt
+      },
+      {
+        role: 'system',
+        content: previous_answer
+      },
+      {
+        role: 'user',
+        content: moreIdeas
+      },
     ],
   });
   return response.data.choices[0].message.content;
@@ -103,8 +139,8 @@ app.post('/searched', async (req, res) => {
     res.cookie('user_id', new_user_id());
     console.log('New User ID:', new_user_id());
   }
-  console.log(req.body.searchQuery);
   const response = await chatBot(req.body.searchQuery);
+  previous_answer = response;
   let response_json = JSON.parse(response);
   await db.insertResearch(user_id, device, os, req.body.searchQuery, timestamp).then(data => {
     if (data !== 0) {
@@ -112,6 +148,16 @@ app.post('/searched', async (req, res) => {
     }
   });
 
+  for (let i = 0; i < response_json.gifts.length; i++) {
+    await db.insertProduct(id_research, response_json.gifts[i].title, response_json.gifts[i].description, 'Amazon');
+  }
+  old_prompt = req.body.searchQuery;
+  res.json(response_json.gifts);
+});
+
+app.post('/moreGifts', async (req, res) => {
+  const response = await chatBotMore(old_prompt, previous_answer);
+  let response_json = JSON.parse(response);
   for (let i = 0; i < response_json.gifts.length; i++) {
     await db.insertProduct(id_research, response_json.gifts[i].title, response_json.gifts[i].description, 'Amazon');
   }

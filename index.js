@@ -1,5 +1,6 @@
 const searchBar = document.getElementById('search-bar');
 const searchButton = document.getElementById('search-button');
+const moreButton = document.getElementById('more-button')
 const resultsList = document.getElementById('results-list');
 const searchDiv = document.getElementById('searchBox');
 const loaderContainer = document.getElementById('loader_waiting');
@@ -149,4 +150,46 @@ searchButton.addEventListener('click', function() {
         console.error(error);
       });
   }
+});
+
+moreButton.addEventListener('click', function() {
+  loaderContainer.style.display = 'block';
+  moreButton.style.display = 'none';
+
+  //here implement more gifts request, send to API previous conversation
+  fetch('/moreGifts', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+  .then(response => response.json())
+  .then(data => {
+    result = data;
+    console.log(result);
+    loaderContainer.style.display = 'none';
+    result.forEach(function(item) {
+      var li = document.createElement("li");
+      var h2 = document.createElement("h2");
+      var p = document.createElement("p");
+      var a = document.createElement("a");
+      var urlWithParams = new URL(base_url);
+      urlWithParams.searchParams.append("k", item.title);
+      a.setAttribute('href', urlWithParams.href);
+      a.setAttribute('target', "_blank");
+
+      h2.textContent = item.title;
+      p.textContent = item.description;
+
+      a.appendChild(h2);
+      li.appendChild(a);
+      li.appendChild(p);
+      resultsList.appendChild(li);
+    });
+
+  })
+  .catch(error => {
+    console.error(error);
+  });
+
 });
