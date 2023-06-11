@@ -21,21 +21,21 @@ $ cd FindYourGift
 
 Installa tutte le dipendenze del progetto, che puoi trovare nel file package.json, tramite il comando:
 
-$ npm install {*NomeDipendenza*}
+$ npm install *NomeDipendenza*
 
 Crea un file di configurazione *.env* nella radice del progetto con le seguenti variabili:
 
-PGUSER=postgres
+PGUSER = postgres
 
-PGHOST=localhost
+PGHOST = localhost
 
-PGPASSWORD= *YourPassword*
+PGPASSWORD = *YourPassword*
 
-PGDATABASE=postgres
+PGDATABASE = postgres
 
-PGPORT=5432
+PGPORT = 5432
 
-OPENAI_API=*your_openai_api_key*
+OPENAI_API = *your_openai_api_key*
 
 Assicurati di sostituire username, password e nome_database con le tue credenziali di accesso al database PostgreSQL e your_openai_api_key con la tua chiave API di OpenAI.
 
@@ -52,7 +52,7 @@ Apri il tuo browser e accedi a http://localhost:3000/home per visualizzare l'app
 ### Utilizzo
 Nella pagina principale dell'applicazione, inserisci una breve descrizione della persona per cui desideri trovare delle idee regalo.
 
-Ad esempio: *Ragazzo di 24 anni, universitario, con la passione per il calcio ed i fumetti.
+Ad esempio: *Ragazzo di 24 anni, universitario, con la passione per il calcio ed i fumetti*
 
 Fai clic sul pulsante "Search" per inviare la descrizione al server.
 
@@ -64,8 +64,6 @@ Puoi visualizzare i regali più desiderati e le ricerche più frequenti direttam
 
 ### Contributi
 Sono benvenuti contributi al progetto! Se desideri contribuire, segui i passaggi seguenti:
-
-Fai il fork del repository su GitHub.
 
 Clona il tuo fork in locale:
 
