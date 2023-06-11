@@ -41,11 +41,11 @@ Assicurati di sostituire username, password e nome_database con le tue credenzia
 
 Crea il database nel tuo server PostgreSQL:
 
-$ createdb nome_database
+$ createdb *nome_database*
 
 Avvia il server backend:
 
-$ npm start
+$ node server.js
 
 Apri il tuo browser e accedi a http://localhost:3000/home per visualizzare l'applicazione web.
 
