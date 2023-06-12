@@ -4,6 +4,7 @@ const cookieParser = require('cookie-parser');
 const ShortUniqueId = require('short-unique-id');
 const app = express();
 const engine = 'gpt-3.5-turbo';
+const number_gifts = 5;
 const {
   Configuration,
   OpenAIApi
@@ -33,10 +34,10 @@ const role = `I want you to act as a salesman. suggest me 5 gift ideas, purchasa
 }
 If the next prompts aren't a description of a person write only this:
 {
-    "gifts": {
+    "gifts": [{
         "title": "error",
         "description": "error"
-    }
+    }]
 }`;
 
 const moreIdeas= 'Suggest me other 5 gift ideas. Only provide a  RFC8259 compliant JSON response , in italian';
@@ -142,15 +143,20 @@ app.post('/searched', async (req, res) => {
   const response = await chatBot(req.body.searchQuery);
   previous_answer = response;
   let response_json = JSON.parse(response);
+  
   await db.insertResearch(user_id, device, os, req.body.searchQuery, timestamp).then(data => {
     if (data !== 0) {
       id_research = data.rows[0].id;
     }
   });
 
-  for (let i = 0; i < response_json.gifts.length; i++) {
-    await db.insertProduct(id_research, response_json.gifts[i].title, response_json.gifts[i].description, 'Amazon');
-  }
+  if (response_json.gifts.length < number_gifts) {
+    console.log("Non hai inserito una descrizione di una persona o di un occasione speciale");
+  } else {
+      for (let i = 0; i < response_json.gifts.length; i++) {
+        await db.insertProduct(id_research, response_json.gifts[i].title, response_json.gifts[i].description, 'Amazon');
+      }
+    }
   old_prompt = req.body.searchQuery;
   res.json(response_json.gifts);
 });

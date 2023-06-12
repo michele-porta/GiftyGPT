@@ -7,6 +7,7 @@ const loaderContainer = document.getElementById('loader_waiting');
 const moreDiv = document.getElementById('more-div-button');
 const base_url = 'https://www.amazon.it/s';
 let result = '';
+const number_gifts = 5;
 
 function home() {
   console.log("This is Home!");
@@ -104,51 +105,62 @@ searchButton.addEventListener('click', function() {
     console.log("This is an empty string!");
     searchButton.disabled = false;
   } else {
-    searchDiv.classList.add('move-up');
-    setTimeout(function() {
-      loaderContainer.style.display = 'block';
-    }, 2000);
+      searchDiv.classList.add('move-up');
+      setTimeout(function() {
+        loaderContainer.style.display = 'block';
+      }, 1500);
 
-    fetch('/searched', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(search)
-      })
-      .then(response => response.json())
-      .then(data => {
-        result = data;
-        console.log(result);
-        loaderContainer.style.display = 'none';
-        resultsList.innerHTML = '';
-        searchButton.disabled = false;
+      fetch('/searched', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(search)
+        })
+        .then(response => response.json())
+        .then(data => {
+          result = data;
+          loaderContainer.style.display = 'none';
+          resultsList.innerHTML = '';
+          searchButton.disabled = false;
+          console.log(result);
 
-        result.forEach(function(item) {
-          var li = document.createElement("li");
-          var h2 = document.createElement("h2");
-          var p = document.createElement("p");
-          var a = document.createElement("a");
-          var urlWithParams = new URL(base_url);
-          urlWithParams.searchParams.append("k", item.title);
-          a.setAttribute('href', urlWithParams.href);
-          a.setAttribute('target', "_blank");
+          if (result.length >= number_gifts) {
+            result.forEach(function(item) {
+              var li = document.createElement("li");
+              var h2 = document.createElement("h2");
+              var p = document.createElement("p");
+              var a = document.createElement("a");
+              var urlWithParams = new URL(base_url);
+              urlWithParams.searchParams.append("k", item.title);
+              a.setAttribute('href', urlWithParams.href);
+              a.setAttribute('target', "_blank");
 
-          h2.textContent = item.title;
-          p.textContent = item.description;
+              h2.textContent = item.title;
+              p.textContent = item.description;
 
-          a.appendChild(h2);
-          li.appendChild(a);
-          li.appendChild(p);
-          resultsList.appendChild(li);
-          resultsList.style.display = 'block';
-          moreDiv.style.display = 'block';
+              a.appendChild(h2);
+              li.appendChild(a);
+              li.appendChild(p);
+              resultsList.appendChild(li);
+              resultsList.style.display = 'block';
+              moreDiv.style.display = 'block';
+            });
+          } else {
+              var li = document.createElement("li");
+              var h2 = document.createElement("h2");
+              var p = document.createElement("p");
+              h2.textContent = "Errore!";
+              p.textContent = "Non hai inserito una descrizione di una persona o di un occasione speciale";
+              li.appendChild(h2);
+              li.appendChild(p);
+              resultsList.appendChild(li);
+              resultsList.style.display = 'block';
+          }
+        })
+        .catch(error => {
+          console.error(error);
         });
-
-      })
-      .catch(error => {
-        console.error(error);
-      });
   }
 });
 
@@ -166,7 +178,6 @@ moreButton.addEventListener('click', function() {
   .then(response => response.json())
   .then(data => {
     result = data;
-    console.log(result);
     loaderContainer.style.display = 'none';
     result.forEach(function(item) {
       var li = document.createElement("li");

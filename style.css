@@ -25,7 +25,10 @@ h1 {
 }
 
  li {
-    margin-top: 10px;
+    margin-top: 40px;
+    background-color: #2f3640;
+    padding: 20px;
+    list-style: none;
 }
 
  #menu {
@@ -37,7 +40,8 @@ h1 {
 }
  #menu ul li {
     margin: 0;
-     display: inline-block;
+    display: inline-block;
+    padding: 0px;
 }
  #menu ul li a {
      display: block;
@@ -88,11 +92,8 @@ h1 {
      display: none;
      margin: auto;
      margin-top: 100px;
-     width: 70%;
+     width: 65%;
      text-align: left;
-     background-color: #2f3640;
-     border-radius: 30px;
-     padding: 25px;
 }
  .loader {
      display: none;
