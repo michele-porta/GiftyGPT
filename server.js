@@ -156,11 +156,11 @@ app.post('/searched', async (req, res) => {
 });
 
 app.post('/moreGifts', async (req, res) => {
-  const response = await chatBotMore(old_prompt, previous_answer);
-  let response_json = JSON.parse(response);
-  for (let i = 0; i < response_json.gifts.length; i++) {
-    await db.insertProduct(id_research, response_json.gifts[i].title, response_json.gifts[i].description, 'Amazon');
+  const response_more = await chatBotMore(old_prompt, previous_answer);
+  let response_more_json = JSON.parse(response_more);
+  for (let i = 0; i < response_more_json.gifts.length; i++) {
+    await db.insertProduct(id_research, response_more_json.gifts[i].title, response_more_json.gifts[i].description, 'Amazon');
   }
 
-  res.json(response_json.gifts);
+  res.json(response_more_json.gifts);
 });
