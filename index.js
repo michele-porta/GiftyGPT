@@ -93,6 +93,12 @@ function searchedloaded() {
   });
 }
 
+function info() {
+  console.log("This is Info!");
+  window.location.href = '/info';
+
+};
+
 searchButton.addEventListener('click', function() {
   searchButton.disabled = true;
   resultsList.style.display = 'none';

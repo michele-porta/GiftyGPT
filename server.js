@@ -122,6 +122,10 @@ app.post("/researches_table", async(req, res) => {
   });
 });
 
+app.get("/info", (req, res) => {
+  res.sendFile(__dirname + "/info.html");
+});
+
 app.post('/searched', async (req, res) => {
   const userAgent = req.headers['user-agent'];
   var ua = parser(userAgent);
@@ -143,7 +147,7 @@ app.post('/searched', async (req, res) => {
   const response = await chatBot(req.body.searchQuery);
   previous_answer = response;
   let response_json = JSON.parse(response);
-  
+
   await db.insertResearch(user_id, device, os, req.body.searchQuery, timestamp).then(data => {
     if (data !== 0) {
       id_research = data.rows[0].id;
