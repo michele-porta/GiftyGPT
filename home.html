@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html>
    <head>
-      <title>Gift</title>
+      <title>GiftyGPT</title>
       <link rel="stylesheet" type="text/css" href="style.css">
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=IBM Plex Sans" rel="stylesheet" />
       <link rel="icon" href="gift.png">
    </head>
    <body>
@@ -12,11 +13,14 @@
             <li onclick="home()"><a href="#">Homepage</a></li>
             <li onclick="desired()"><a href="#">I più desiderari</a></li>
             <li onclick="search()"><a href="#">Le ricerche più frequenti</a></li>
+            <li onclick="info()"><a href="#">Come funziona</a></li>
          </ul>
       </div>
-      <h1>Find your gift</h1>
+      <h1>GiftyGPT</h1>
+      <div class="description">Inserisci una breve descrizione della persona a cui vuoi fare un regalo. <br> 
+         L'intelligenza artificiale troverà le migliori idee per te</div>
       <div class="searchBox" id="searchBox">
-         <input type="text" id="search-bar" placeholder="Type here...">
+         <input type="text" id="search-bar" placeholder="Scrivi qui...">
          <button id="search-button">
          <i class="material-icons">
          search

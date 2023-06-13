@@ -11,17 +11,22 @@ body {
 
 
 h1 {
-     font-size: 34px;
+     font-size: 36px;
      color: #2f3640;
      text-align: center;
+     font-family: "IBM Plex Sans";
+     font-weight: 700;
+     margin-top: 50px;
 }
  h2 {
      font-size: 20px;
      color: white;
+     font-family: "IBM Plex Sans";
 }
  p {
      font-size: 16px;
      color: white;
+     font-family: "IBM Plex Sans";
 }
 
  li {
@@ -29,10 +34,14 @@ h1 {
     background-color: #2f3640;
     padding: 20px;
     list-style: none;
+    font-family: "IBM Plex Sans";
 }
 
  #menu {
      background-color: #2f3640;
+     display: flex;
+     justify-content: center;
+     align-items: center;
 }
  #menu ul {
      padding: 0;
@@ -45,14 +54,22 @@ h1 {
 }
  #menu ul li a {
      display: block;
-     padding: 12px;
+     padding: 20px;
      text-decoration: none;
      color: white;
-     font-size: 17px;
+     font-size: 18px;
 }
  #menu ul li a:hover {
      background-color: gray;
 }
+
+.description {
+    font-size: 20px;
+    font-family: "IBM Plex Sans";
+    font-weight: 500;
+    text-align: center;
+  }
+
  .searchBox {
      margin: auto;
      margin-top: 250px;
@@ -61,7 +78,7 @@ h1 {
      width: 500px;
      border-radius: 40px;
      padding: 10px;
-     transition: margin-top 1.5s;
+     transition: margin-top 1s;
 }
  .move-up {
      margin-top: 50px;
