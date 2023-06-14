@@ -65,6 +65,10 @@ function search() {
   window.location.href = '/search';
 }
 
+function showGifts(title) {
+  console.log("Mostro i regali con il titolo: ", title);
+}
+
 function createTableResearch(research) {
   const tbody = document.querySelector('#table_searched');
   const row = document.createElement('tr');
@@ -75,9 +79,12 @@ function createTableResearch(research) {
 
   const linkCell = document.createElement('td');
   const a = document.createElement("a");
-  a.setAttribute('href', "www.google.com");
+  a.setAttribute('href', "#");
   a.textContent = "Mostra regali";
   linkCell.appendChild(a);
+  linkCell.addEventListener("click", function() {
+    showGifts(research);
+  });
   row.appendChild(linkCell);
 
   tbody.appendChild(row);

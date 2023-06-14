@@ -107,9 +107,37 @@ const getresearches = async () => {
 	}
 };
 
+const getProductsFromResearch = async (title) => {
+
+	const client = new Client({
+		user: process.env.PGUSER,
+		host: process.env.PGHOST,
+		database: process.env.PGDATABASE,
+		password: process.env.PGPASSWORD,
+		port: process.env.PGPORT
+	});
+
+	try {
+		await client.connect(); // gets connection
+		await client.query(`SELECT DISTINCT title, description, link
+			FROM products
+			JOIN research
+			ON products.research_id = research.id
+			and research.research = $1
+			LIMIT 10`, [title]); // sends queries
+		return result.rows;
+	} catch (error) {
+		console.error(error.stack);
+		return false;
+	} finally {
+		await client.end(); // closes connection
+	}
+};
+
 module.exports = {
 	insertResearch,
 	insertProduct,
 	getProducts,
-	getresearches
+	getresearches,
+	getProductsFromResearch
 };
