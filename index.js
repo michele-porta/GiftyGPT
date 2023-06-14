@@ -66,7 +66,16 @@ function search() {
 }
 
 function showGifts(title) {
-  console.log("Mostro i regali con il titolo: ", title);
+  const title_json = {
+    title
+  };
+  fetch('/showGiftsResearch', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(title_json)
+  });
 }
 
 function createTableResearch(research) {

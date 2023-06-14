@@ -119,7 +119,7 @@ const getProductsFromResearch = async (title) => {
 
 	try {
 		await client.connect(); // gets connection
-		await client.query(`SELECT DISTINCT title, description, link
+		const result= await client.query(`SELECT DISTINCT title, description, link
 			FROM products
 			JOIN research
 			ON products.research_id = research.id

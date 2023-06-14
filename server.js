@@ -122,6 +122,16 @@ app.post("/researches_table", async(req, res) => {
   });
 });
 
+app.post("/showGiftsResearch", async(req, res) => {
+  const title = req.body.title;
+  await db.getProductsFromResearch(title).then(data => {
+    if (data !== 0) {
+      console.log(data);
+      res.json(data);
+    }
+  });
+});
+
 app.get("/info", (req, res) => {
   res.sendFile(__dirname + "/info.html");
 });
