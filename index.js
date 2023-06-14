@@ -33,7 +33,13 @@ function createTableDesired(title, description, link) {
   row.appendChild(descriptionCell);
 
   const linkCell = document.createElement('td');
-  linkCell.textContent = link;
+  const a = document.createElement("a");
+  var urlWithParams = new URL(base_url);
+  urlWithParams.searchParams.append("k", title);
+  a.setAttribute('href', urlWithParams.href);
+  a.setAttribute('target', "_blank");
+  a.textContent = link;
+  linkCell.appendChild(a);
   row.appendChild(linkCell);
 
   tbody.appendChild(row);
@@ -68,13 +74,12 @@ function createTableResearch(research) {
   row.appendChild(researchCell);
 
   const linkCell = document.createElement('td');
-  const linkButton = document.createElement('button');
-  linkButton.setAttribute("class", "table-button");
-  const text = document.createTextNode("Mostra regali");
-  linkButton.appendChild(text);
-  linkCell.appendChild(linkButton);
-
+  const a = document.createElement("a");
+  a.setAttribute('href', "www.google.com");
+  a.textContent = "Mostra regali";
+  linkCell.appendChild(a);
   row.appendChild(linkCell);
+
   tbody.appendChild(row);
 }
 
