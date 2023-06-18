@@ -6,6 +6,7 @@ const searchDiv = document.getElementById('searchBox');
 const loaderContainer = document.getElementById('loader_waiting');
 const moreDiv = document.getElementById('more-div-button');
 const base_url = 'https://www.amazon.it/s';
+const referralCode = 'giftygpt-21'
 let result = '';
 const number_gifts = 5;
 
@@ -36,6 +37,7 @@ function createTableDesired(title, description, link) {
   const a = document.createElement("a");
   var urlWithParams = new URL(base_url);
   urlWithParams.searchParams.append("k", title);
+  urlWithParams.searchParams.append("tag", referralCode);
   a.setAttribute('href', urlWithParams.href);
   a.setAttribute('target', "_blank");
   a.textContent = link;
@@ -160,6 +162,8 @@ searchButton.addEventListener('click', function() {
               var a = document.createElement("a");
               var urlWithParams = new URL(base_url);
               urlWithParams.searchParams.append("k", item.title);
+              urlWithParams.searchParams.append("tag", referralCode);
+
               a.setAttribute('href', urlWithParams.href);
               a.setAttribute('target', "_blank");
 
