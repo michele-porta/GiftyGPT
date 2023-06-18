@@ -254,6 +254,10 @@ h1 {
 
 }
 
+.collection img:hover + p {
+    color: #2f3640;
+}
+
 .collection p{
     position: absolute;
     top: 50%;
@@ -263,6 +267,10 @@ h1 {
     color: white;
     font-size: 50px;
     text-transform: capitalize;
+}
+
+.collection p:hover{
+    color: #2f3640;
 }
 
 table {
