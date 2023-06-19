@@ -5,6 +5,9 @@ const resultsList = document.getElementById('results-list');
 const searchDiv = document.getElementById('searchBox');
 const loaderContainer = document.getElementById('loader_waiting');
 const moreDiv = document.getElementById('more-div-button');
+const productContainers = [...document.querySelectorAll('.product-container')];
+const nxtBtn = [...document.querySelectorAll('.nxt-btn')];
+const preBtn = [...document.querySelectorAll('.pre-btn')];
 const base_url = 'https://www.amazon.it/s';
 const referralCode = 'giftygpt-21'
 let result = '';
@@ -235,3 +238,16 @@ moreButton.addEventListener('click', function() {
   });
 
 });
+
+productContainers.forEach((item, i) => {
+  let containerDimenstions = item.getBoundingClientRect();
+  let containerWidth = containerDimenstions.width;
+
+  nxtBtn[i].addEventListener('click', () => {
+      item.scrollLeft += containerWidth;
+  })
+
+  preBtn[i].addEventListener('click', () => {
+      item.scrollLeft -= containerWidth;
+  })
+})
