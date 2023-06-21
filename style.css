@@ -19,6 +19,14 @@ h1 {
      color: #2f3640;
      font-family: "IBM Plex Sans";
 }
+
+h3 {
+    font-size: 20px;
+    margin: 50px;
+    color: whitesmoke;
+    font-family: "IBM Plex Sans";
+}
+
  p {
      font-size: 16px;
      color: white;
@@ -246,7 +254,7 @@ h1 {
     cursor: pointer;
     z-index: 8;
     position: absolute;
-    height: 42%;
+    height: 45%;
     width: 8vw;
     background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, #fff 100%);
 }
@@ -277,6 +285,7 @@ h1 {
 .collection{
     position: relative;
     margin: 0 auto;
+    margin-bottom: 50px;
 }
 
 .collection img{
@@ -297,7 +306,8 @@ h1 {
     transform: translate(-50%, -50%);
     text-align: center;
     color: white;
-    font-size: 50px;
+    font-size: 40px;
+    font-size: 4vw;
     text-transform: capitalize;
 }
 
@@ -329,4 +339,42 @@ table th {
     background-color: #2f3640;
     color: white;
   }
+
+footer{
+    position: relative;
+    padding-bottom: 20px;
+    background: #2f3640;
+}
+
+.footer-content{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.footer-ul-container{
+    width: 30%;
+    display: flex;
+}
+
+.footer-ul-container li{
+    margin: 10px;
+}
+
+.category-title{
+    color: whitesmoke;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.footer-link{
+    text-transform: capitalize;
+    color: whitesmoke;
+}
+
+
+.footer-link:hover{
+    color: white;
+}
+
  
