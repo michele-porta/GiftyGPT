@@ -20,13 +20,6 @@ h1 {
      font-family: "IBM Plex Sans";
 }
 
-h3 {
-    font-size: 20px;
-    margin: 50px;
-    color: whitesmoke;
-    font-family: "IBM Plex Sans";
-}
-
  p {
      font-size: 16px;
      color: white;
@@ -319,8 +312,7 @@ table {
     border-collapse: collapse;
     width: 80%;
     margin:auto;
-    margin-bottom: 20px;
-
+    margin-bottom: 100px;
   }
   
 table td, th {
@@ -352,29 +344,37 @@ footer{
     justify-content: space-between;
 }
 
+.footer-content h2 {
+    font-size: 24px;
+    margin: 50px;
+    color: whitesmoke;
+    font-family: "IBM Plex Sans";
+}
+
+.footer-content p {
+    font-size: 15px;
+    color: whitesmoke;
+    font-family: "IBM Plex Sans";
+}
+
 .footer-ul-container{
-    width: 30%;
+    width: 25%;
     display: flex;
 }
 
 .footer-ul-container li{
-    margin: 10px;
+    margin: 0px;
 }
 
 .category-title{
     color: whitesmoke;
-    font-size: 20px;
+    font-size: 22px;
     margin-bottom: 10px;
 }
 
 .footer-link{
     text-transform: capitalize;
     color: whitesmoke;
-}
-
-
-.footer-link:hover{
-    color: white;
 }
 
  
