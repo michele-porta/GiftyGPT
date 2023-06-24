@@ -5,9 +5,12 @@ const resultsList = document.getElementById('results-list');
 const searchDiv = document.getElementById('searchBox');
 const loaderContainer = document.getElementById('loader_waiting');
 const moreDiv = document.getElementById('more-div-button');
+const titleCategory= document.getElementById('title_category');
+
 const productContainers = [...document.querySelectorAll('.product-container')];
 const nxtBtn = [...document.querySelectorAll('.nxt-btn')];
 const preBtn = [...document.querySelectorAll('.pre-btn')];
+
 const base_url = 'https://www.amazon.it/s';
 const referralCode = 'giftygpt-21'
 let result = '';
@@ -125,9 +128,17 @@ function info() {
 
 };
 
+function categoryloaded() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const title = urlParams.get('title');
+  titleCategory.textContent = title;
+
+}
+
 searchButton.addEventListener('click', function() {
   searchButton.disabled = true;
   resultsList.style.display = 'none';
+  moreDiv.style.display = 'none';
   const searchQuery = searchBar.value;
   const search = {
     searchQuery
@@ -137,11 +148,8 @@ searchButton.addEventListener('click', function() {
     console.log("This is an empty string!");
     searchButton.disabled = false;
   } else {
-      searchDiv.classList.add('move-up');
-      setTimeout(function() {
-        loaderContainer.style.display = 'block';
-      }, 1500);
-
+      
+      loaderContainer.style.display = 'block';
       fetch('/searched', {
           method: 'POST',
           headers: {
