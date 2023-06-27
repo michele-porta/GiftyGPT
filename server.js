@@ -25,7 +25,7 @@ const configuration = new Configuration({
 
 const openai = new OpenAIApi(configuration);
 
-const role = `I want you to act as a salesman. suggest me 5 gift ideas, purchasable on Amazon, based on the person's description that i will write you in the next prompt. Only provide a  RFC8259 compliant JSON response , in italian, following this format without deviation.
+const role = `I want you to act as a salesman. suggest me 5 gift ideas, purchasable on Amazon, based on the person's description that i will write you in the next prompt. Only provide a RFC8259 compliant JSON response , in italian, following this format without deviation.
 {
     "gifts": {
         "title": "",
@@ -40,7 +40,7 @@ If the next prompts aren't a description of a person write only this:
     }]
 }`;
 
-const moreIdeas= 'Suggest me other 5 gift ideas. Only provide a  RFC8259 compliant JSON response , in italian';
+const moreIdeas= 'Suggest me other 5 gift ideas. Only provide a RFC8259 compliant JSON response , in italian';
 
 async function chatBot(prompt) {
   const response = await openai.createChatCompletion({

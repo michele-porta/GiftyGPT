@@ -6,6 +6,7 @@ const searchDiv = document.getElementById('searchBox');
 const loaderContainer = document.getElementById('loader_waiting');
 const moreDiv = document.getElementById('more-div-button');
 const titleCategory= document.getElementById('title_category');
+const cardButton = document.querySelectorAll('.card-btn');
 
 const productContainers = [...document.querySelectorAll('.product-container')];
 const nxtBtn = [...document.querySelectorAll('.nxt-btn')];
@@ -246,6 +247,12 @@ moreButton.addEventListener('click', function() {
   });
 
 });
+
+cardButton.forEach(element=>{
+  element.onclick = function(){
+    console.log("Click on button card!");
+  }
+})
 
 productContainers.forEach((item, i) => {
   let containerDimenstions = item.getBoundingClientRect();
