@@ -67,7 +67,7 @@ Sono benvenuti contributi al progetto! Se desideri contribuire, segui i passaggi
 
 Clona il tuo fork in locale:
 
-$ git clone https://github.com/michele-porta/findYourGift.git
+$ git clone https://github.com/michele-porta/GiftyGPT.git
 
 Crea un branch per il tuo lavoro:
 
@@ -82,9 +82,3 @@ Pusha le modifiche sul tuo fork:
 $ git push origin nome_branch
 
 Apri una pull request sul repository originale su GitHub.
-
-### Licenza
-Il progetto è concesso in licenza secondo i termini della licenza MIT. Consulta il file LICENSE per ulteriori informazioni.
-
-### Contatti
-Se hai domande o dubbi, puoi contattarmi all'indirizzo email michele.porta@protonmail.com.
